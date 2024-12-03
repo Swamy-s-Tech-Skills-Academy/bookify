@@ -12,15 +12,7 @@ public sealed class Apartment : Entity
 
     public string Description { get; private set; } = string.Empty;
 
-    public string Country { get; private set; } = string.Empty;
-
-    public string State { get; private set; } = string.Empty;
-
-    public string ZipCode { get; private set; } = string.Empty;
-
-    public string City { get; private set; } = string.Empty;
-
-    public string Street { get; private set; } = string.Empty;
+    public Address Address { get; private set; }
 
     public decimal PriceAmount { get; private set; }
 

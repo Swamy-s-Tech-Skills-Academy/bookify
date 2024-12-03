@@ -49,4 +49,27 @@ public sealed class Booking : Entity
     public DateTime? CompletedOnUtc { get; private set; }
 
     public DateTime? CancelledOnUtc { get; private set; }
+
+    public static Booking Reserve(
+        Guid apartmentId,
+        Guid userId,
+        DateRange duration,
+        DateTime utcNow)
+    {
+        //PricingDetails pricingDetails = pricingService.CalculatePrice(apartment, duration);
+
+        var booking = new Booking(
+            Guid.NewGuid(),
+            apartmentId,
+            userId,
+            duration,
+            BookingStatus.Reserved,
+            utcNow);
+
+        //booking.RaiseDomainEvent(new BookingReservedDomainEvent(booking.Id));
+
+        apartment.LastBookedOnUtc = utcNow;
+
+        return booking;
+    }
 }

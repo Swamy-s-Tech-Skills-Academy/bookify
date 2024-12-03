@@ -1,6 +1,7 @@
 ﻿using Bookify.Domain.Abstractions.Entities;
 using Bookify.Domain.Apartments.Entities;
 using Bookify.Domain.Bookings.Enums;
+using Bookify.Domain.Bookings.Events;
 using Bookify.Domain.Bookings.Services;
 using Bookify.Domain.Bookings.ValueObjects;
 using Bookify.Domain.Shared.ValueObjects;
@@ -69,7 +70,7 @@ public sealed class Booking : Entity
             BookingStatus.Reserved,
             utcNow);
 
-        //booking.RaiseDomainEvent(new BookingReservedDomainEvent(booking.Id));
+        booking.RaiseDomainEvent(new BookingReservedDomainEvent(booking.Id));
 
         apartment.LastBookedOnUtc = utcNow;
 

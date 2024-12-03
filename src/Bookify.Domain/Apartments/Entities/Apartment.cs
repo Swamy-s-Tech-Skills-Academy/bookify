@@ -10,9 +10,9 @@ public sealed class Apartment : Entity
     {
     }
 
-    public string Name { get; private set; } = string.Empty;
+    public EntityName Name { get; private set; }
 
-    public string Description { get; private set; } = string.Empty;
+    public EntityDescription Description { get; private set; }
 
     public Address Address { get; private set; }
 

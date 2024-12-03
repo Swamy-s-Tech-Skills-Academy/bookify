@@ -1,5 +1,7 @@
 ﻿using Bookify.Domain.Abstractions.Entities;
+using Bookify.Domain.Apartments.Entities;
 using Bookify.Domain.Bookings.Enums;
+using Bookify.Domain.Bookings.Services;
 using Bookify.Domain.Bookings.ValueObjects;
 using Bookify.Domain.Shared.ValueObjects;
 
@@ -50,19 +52,20 @@ public sealed class Booking : Entity
 
     public DateTime? CancelledOnUtc { get; private set; }
 
-    public static Booking Reserve(
-        Guid apartmentId,
-        Guid userId,
-        DateRange duration,
-        DateTime utcNow)
+    public static Booking Reserve(Apartment apartment, Guid userId, DateRange duration,
+        DateTime utcNow, PricingService pricingService)
     {
-        //PricingDetails pricingDetails = pricingService.CalculatePrice(apartment, duration);
+        PricingDetails pricingDetails = pricingService.CalculatePrice(apartment, duration);
 
         var booking = new Booking(
             Guid.NewGuid(),
-            apartmentId,
+            apartment.Id,
             userId,
             duration,
+            pricingDetails.PriceForPeriod,
+            pricingDetails.CleaningFee,
+            pricingDetails.AmenitiesUpCharge,
+            pricingDetails.TotalPrice,
             BookingStatus.Reserved,
             utcNow);
 

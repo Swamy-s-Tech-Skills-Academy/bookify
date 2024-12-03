@@ -27,4 +27,6 @@ public sealed class Apartment
     public string CleaningFeeCurrency { get; private set; } = string.Empty;
 
     public DateTime? LastBookedOnUtc { get; internal set; }
+
+    public List<Amenity> Amenities { get; private set; } = [];
 }

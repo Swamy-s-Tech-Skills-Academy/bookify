@@ -1,4 +1,4 @@
-﻿namespace Bookify.Domain.Shared;
+﻿namespace Bookify.Domain.Shared.ValueObjects;
 
 public sealed record Currency
 {

@@ -1,4 +1,4 @@
-﻿using Bookify.Domain.Abstractions;
+﻿using Bookify.Domain.Abstractions.Entities;
 using Bookify.Domain.Apartments.Enums;
 using Bookify.Domain.Apartments.ValueObjects;
 using Bookify.Domain.Shared.ValueObjects;

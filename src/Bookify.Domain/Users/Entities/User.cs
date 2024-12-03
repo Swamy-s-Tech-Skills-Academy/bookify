@@ -1,4 +1,4 @@
-﻿using Bookify.Domain.Abstractions;
+﻿using Bookify.Domain.Abstractions.Entities;
 using Bookify.Domain.Users.ValueObjects;
 
 namespace Bookify.Domain.Users.Entities;

@@ -11,9 +11,7 @@ public class PricingService
     {
         Currency currency = apartment.Price.Currency;
 
-        var priceForPeriod = new Money(
-            apartment.Price.Amount * period.LengthInDays,
-            currency);
+        var priceForPeriod = new Money(apartment.Price.Amount * period.LengthInDays, currency);
 
         decimal percentageUpCharge = 0;
         foreach (Amenity amenity in apartment.Amenities)
@@ -30,9 +28,7 @@ public class PricingService
         var amenitiesUpCharge = Money.Zero(currency);
         if (percentageUpCharge > 0)
         {
-            amenitiesUpCharge = new Money(
-                priceForPeriod.Amount * percentageUpCharge,
-                currency);
+            amenitiesUpCharge = new Money(priceForPeriod.Amount * percentageUpCharge, currency);
         }
 
         var totalPrice = Money.Zero(currency);

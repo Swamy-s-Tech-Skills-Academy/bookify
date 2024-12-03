@@ -53,8 +53,7 @@ public sealed class Booking : Entity
 
     public DateTime? CancelledOnUtc { get; private set; }
 
-    public static Booking Reserve(Apartment apartment, Guid userId, DateRange duration,
-        DateTime utcNow, PricingService pricingService)
+    public static Booking Reserve(Apartment apartment, Guid userId, DateRange duration, DateTime utcNow, PricingService pricingService)
     {
         PricingDetails pricingDetails = pricingService.CalculatePrice(apartment, duration);
 

@@ -1,5 +1,5 @@
 # bookify
-I am learning Clean Architecture from Milan Jovanović Pragmatic Clean Architecture Course.
+I am learning Clean Architecture from Milan Jovanović Pragmatic Clean Architecture Course. This project is a result of the learnings from Milan Jovanović Pragmatic Clean Architecture Course.
 
 ## Reference(s)
 

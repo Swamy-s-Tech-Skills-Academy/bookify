@@ -1,13 +1,22 @@
 ﻿using Bookify.Domain.Abstractions;
 using Bookify.Domain.Apartments.Enums;
 using Bookify.Domain.Apartments.ValueObjects;
+using Bookify.Domain.Shared.ValueObjects;
+using System.Xml.Linq;
 
 namespace Bookify.Domain.Apartments.Entities;
 
 public sealed class Apartment : Entity
 {
-    public Apartment(Guid id) : base(id)
+    public Apartment(Guid id, EntityName name, EntityDescription description, Address address,
+        Money price, Money cleaningFee, List<Amenity> amenities) : base(id)
     {
+        Name = name;
+        Description = description;
+        Address = address;
+        Price = price;
+        CleaningFee = cleaningFee;
+        Amenities = amenities;
     }
 
     public EntityName Name { get; private set; }
@@ -16,13 +25,9 @@ public sealed class Apartment : Entity
 
     public Address Address { get; private set; }
 
-    public decimal PriceAmount { get; private set; }
+    public Money Price { get; private set; }
 
-    public string PriceCurrency { get; private set; } = string.Empty;
-
-    public decimal CleaningFeeAmount { get; private set; }
-
-    public string CleaningFeeCurrency { get; private set; } = string.Empty;
+    public Money CleaningFee { get; private set; }
 
     public DateTime? LastBookedOnUtc { get; internal set; }
 

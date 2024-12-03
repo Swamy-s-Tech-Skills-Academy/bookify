@@ -2,7 +2,7 @@
 using Bookify.Domain.Apartments.Enums;
 using Bookify.Domain.Apartments.ValueObjects;
 
-namespace Bookify.Domain.Apartments;
+namespace Bookify.Domain.Apartments.Entities;
 
 public sealed class Apartment : Entity
 {

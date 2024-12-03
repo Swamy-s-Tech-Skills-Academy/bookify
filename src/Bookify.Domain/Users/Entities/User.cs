@@ -4,7 +4,7 @@ namespace Bookify.Domain.Users.Entities;
 
 public sealed class User : Entity
 {
-    public User(Guid id) : base(id) 
+    public User(Guid id) : base(id)
     {
     }
 }

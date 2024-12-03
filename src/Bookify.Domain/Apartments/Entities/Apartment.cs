@@ -2,7 +2,6 @@
 using Bookify.Domain.Apartments.Enums;
 using Bookify.Domain.Apartments.ValueObjects;
 using Bookify.Domain.Shared.ValueObjects;
-using System.Xml.Linq;
 
 namespace Bookify.Domain.Apartments.Entities;
 

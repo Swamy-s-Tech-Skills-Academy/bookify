@@ -1,4 +1,5 @@
 ﻿using Bookify.Domain.Abstractions.Entities;
+using Bookify.Domain.Abstractions.ValueObjects;
 using Bookify.Domain.Apartments.Entities;
 using Bookify.Domain.Bookings.Enums;
 using Bookify.Domain.Bookings.Events;
@@ -67,4 +68,72 @@ public sealed class Booking : Entity
 
         return booking;
     }
+
+    public Result Confirm(DateTime utcNow)
+    {
+        if (Status != BookingStatus.Reserved)
+        {
+            return Result.Failure(BookingErrors.NotReserved);
+        }
+
+        Status = BookingStatus.Confirmed;
+        ConfirmedOnUtc = utcNow;
+
+        RaiseDomainEvent(new BookingConfirmedDomainEvent(Id));
+
+        return Result.Success();
+    }
+
+    //public Result Reject(DateTime utcNow)
+    //{
+    //    if (Status != BookingStatus.Reserved)
+    //    {
+    //        return Result.Failure(BookingErrors.NotReserved);
+    //    }
+
+    //    Status = BookingStatus.Rejected;
+    //    RejectedOnUtc = utcNow;
+
+    //    RaiseDomainEvent(new BookingRejectedDomainEvent(Id));
+
+    //    return Result.Success();
+    //}
+
+    //public Result Complete(DateTime utcNow)
+    //{
+    //    if (Status != BookingStatus.Confirmed)
+    //    {
+    //        return Result.Failure(BookingErrors.NotConfirmed);
+    //    }
+
+    //    Status = BookingStatus.Completed;
+    //    CompletedOnUtc = utcNow;
+
+    //    RaiseDomainEvent(new BookingCompletedDomainEvent(Id));
+
+    //    return Result.Success();
+    //}
+
+    //public Result Cancel(DateTime utcNow)
+    //{
+    //    if (Status != BookingStatus.Confirmed)
+    //    {
+    //        return Result.Failure(BookingErrors.NotConfirmed);
+    //    }
+
+    //    var currentDate = DateOnly.FromDateTime(utcNow);
+
+    //    if (currentDate > Duration.Start)
+    //    {
+    //        return Result.Failure(BookingErrors.AlreadyStarted);
+    //    }
+
+    //    Status = BookingStatus.Cancelled;
+    //    CancelledOnUtc = utcNow;
+
+    //    RaiseDomainEvent(new BookingCancelledDomainEvent(Id));
+
+    //    return Result.Success();
+    //}
+
 }

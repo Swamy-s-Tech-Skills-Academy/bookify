@@ -84,56 +84,56 @@ public sealed class Booking : Entity
         return Result.Success();
     }
 
-    //public Result Reject(DateTime utcNow)
-    //{
-    //    if (Status != BookingStatus.Reserved)
-    //    {
-    //        return Result.Failure(BookingErrors.NotReserved);
-    //    }
+    public Result Reject(DateTime utcNow)
+    {
+        if (Status != BookingStatus.Reserved)
+        {
+            return Result.Failure(BookingErrors.NotReserved);
+        }
 
-    //    Status = BookingStatus.Rejected;
-    //    RejectedOnUtc = utcNow;
+        Status = BookingStatus.Rejected;
+        RejectedOnUtc = utcNow;
 
-    //    RaiseDomainEvent(new BookingRejectedDomainEvent(Id));
+        RaiseDomainEvent(new BookingRejectedDomainEvent(Id));
 
-    //    return Result.Success();
-    //}
+        return Result.Success();
+    }
 
-    //public Result Complete(DateTime utcNow)
-    //{
-    //    if (Status != BookingStatus.Confirmed)
-    //    {
-    //        return Result.Failure(BookingErrors.NotConfirmed);
-    //    }
+    public Result Complete(DateTime utcNow)
+    {
+        if (Status != BookingStatus.Confirmed)
+        {
+            return Result.Failure(BookingErrors.NotConfirmed);
+        }
 
-    //    Status = BookingStatus.Completed;
-    //    CompletedOnUtc = utcNow;
+        Status = BookingStatus.Completed;
+        CompletedOnUtc = utcNow;
 
-    //    RaiseDomainEvent(new BookingCompletedDomainEvent(Id));
+        RaiseDomainEvent(new BookingCompletedDomainEvent(Id));
 
-    //    return Result.Success();
-    //}
+        return Result.Success();
+    }
 
-    //public Result Cancel(DateTime utcNow)
-    //{
-    //    if (Status != BookingStatus.Confirmed)
-    //    {
-    //        return Result.Failure(BookingErrors.NotConfirmed);
-    //    }
+    public Result Cancel(DateTime utcNow)
+    {
+        if (Status != BookingStatus.Confirmed)
+        {
+            return Result.Failure(BookingErrors.NotConfirmed);
+        }
 
-    //    var currentDate = DateOnly.FromDateTime(utcNow);
+        var currentDate = DateOnly.FromDateTime(utcNow);
 
-    //    if (currentDate > Duration.Start)
-    //    {
-    //        return Result.Failure(BookingErrors.AlreadyStarted);
-    //    }
+        if (currentDate > Duration.Start)
+        {
+            return Result.Failure(BookingErrors.AlreadyStarted);
+        }
 
-    //    Status = BookingStatus.Cancelled;
-    //    CancelledOnUtc = utcNow;
+        Status = BookingStatus.Cancelled;
+        CancelledOnUtc = utcNow;
 
-    //    RaiseDomainEvent(new BookingCancelledDomainEvent(Id));
+        RaiseDomainEvent(new BookingCancelledDomainEvent(Id));
 
-    //    return Result.Success();
-    //}
+        return Result.Success();
+    }
 
 }

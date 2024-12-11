@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Bookify.Domain.Bookings.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Bookify.Application;
 
@@ -19,7 +20,7 @@ public static class DependencyInjection
 
         //services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly, includeInternalTypes: true);
 
-        //services.AddTransient<PricingService>();
+        services.AddTransient<PricingService>();
 
         return services;
     }
